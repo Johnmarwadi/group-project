@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edureka Multi-Section Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;600&family=Open+Sans:wght@300;600&family=Lora:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+/* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+
+        /* Infotainment Section */
+        #infotainment {
+            background-color: #ffebee;
+            border: 5px solid blue;
+            animation: fadeIn 1s ease;
+        }
+
+        .fact,
+        .news {
+            margin-bottom: 20px;
+            color: blue;
+        }
+
+        .infotainment-media {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .infotainment-media img,
+        .infotainment-media video {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+            border: 2px solid blue;
+        }
+
+        .infotainment-media img:hover,
+        .infotainment-media video:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* Modal Styles for Images/Videos */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .modal img,
+        .modal video {
+            display: block;
+            margin: 0 auto;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            cursor: pointer;
+        }
+
+        /* Tribute Section */
+        #tribute {
+            background-color: #e8eaf6;
+            text-align: center;
+            border: 5px solid #3949ab;
+            animation: slideIn 1s ease;
+        }
+
+        #tribute img {
+            width: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid #1e88e5;
+        }
+
+        #tribute p {
+            color: #303f9f;
+        }
+
+        /* Social Media Sidebar */
+        .social-icons {
+            position: fixed;
+            top: 10%;
+            left: 0;
+            background-color: yellow;
+            padding: 10px;
+            z-index: 1000;
+            width: 60px;
+            height: 55%;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            font-size: 24px;
+        }
+
+        .social-icons a:hover {
+            background-color: #555;
+            transform: translateX(10px);
+        }
+
+        .social-icons a.facebook {
+            background-color: #3b5998;
+        }
+
+        .social-icons a.twitter {
+            background-color: #00acee;
+        }
+
+        .social-icons a.instagram {
+            background-color: #e1306c;
+        }
+
+        .social-icons a.linkedin {
+            background-color: #0077b5;
+        }
+
+        .social-icons a.youtube {
+            background-color: #ff0000;
+        }
+
+        .social-icons a.pinterest {
+            background-color: #c13584;
+        }
+
+        .social-icons a.snapchat {
+            background-color: #fffc00;
+        }
+
+        .social-icons a.reddit {
+            background-color: #ff4500;
+        }
+
+        .social-icons a.tumblr {
+            background-color: #35465c;
+        }
+
+        .social-icons a.whatsapp {
+            background-color: #25D366;
+        }
+
+        .social-icons a.telegram {
+            background-color: #0088cc;
+        }
+
+        .social-icons a.skype {
+            background-color: #00aff0;
+        }
+
+        .social-icons a.github {
+            background-color: #333;
+        }
+
+        .social-icons a.gitlab {
+            background-color: #fc6d26;
+        }
+
+        .social-icons a.dribbble {
+            background-color: #ea4c89;
+        }
+
+        .social-icons a.behance {
+            background-color: #1769ff;
+        }
+
+        .social-icons a.spotify {
+            background-color: #1db954;
+        }
+
+        .social-icons a.vimeo {
+            background-color: #1ab7ea;
+        }
+
+        .social-icons a.soundcloud {
+            background-color: #ff5500;
+        }
+
+        .social-icons a.tiktok {
+            background-color: #000000;
+        }
+
+        .social-icons a.reverbnation {
+            background-color: #2a2a2a;
+        }
+
+        .social-icons a.deviantart {
+            background-color: #05cc47;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+
+            .infotainment-media img,
+            .infotainment-media video {
+                width: 90%;
+            }
+
+            .social-icons {
+                width: 50px;
+                font-size: 20px;
+            }
+
+            .social-icons a {
+                padding: 10px;
+            }
+        }
+
+
+/* start videos*/
+.video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            border: 2px solid blue; /* Border color */
+            border-radius: 15px; /* Stylish border radius */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: silver; /* Thumbnail background color */
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+            border-radius: 15px; /* Match border radius with thumbnail */
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .video-thumbnail.expanded {
+            width: 80vw; /* Responsive width */
+            max-width: 80%;
+            height: 45vw; /* Responsive height */
+            max-height: 450px;
+        }
+
+        .video-thumbnail.expanded iframe {
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            animation: zoomIn 0.5s ease;
+            border-radius: 15px; /* Match modal border radius */
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }/*the end videos*/
+
+        h1 {
+            align-items: center;
+            background-color: gold;
+            text-align: center;
+            font-size: 2.5em;
+            color: purple;
+            margin: 0;
+        }
+        h1 + h1 {
+            margin-top: 20px; /* Adjust the space between the headings */
+        }
+
+/* the end slide show */
+         /* Carousel Container Styles */
+         #carousel-container {
+            width: 100%;
+            height: 90vh; /* Full viewport height */
+            overflow: hidden;
+            position: relative;
+            border: 2px solid blue; /* Border color */
+            background-color: silver; /* Background color */
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%; /* Each slide takes up 100% of the container width */
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the slide area */
+            display: block; /* Prevent any extra space below the image */
+        }
+
+        /* Navigation Button Styles */
+        .carousel-prev,
+        .carousel-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.5s ease;
+            z-index: 1;
+            transform: translateY(-50%); /* Center vertically */
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* the end slide show */
+
+
+/*start emoji*/
+#last_container_9 {
+            background-color: silver;
+            border: 2px solid blue;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            animation: pulse 1.5s infinite;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #emoji-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: blue;
+        }
+
+        .emoji-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .emoji-item {
+            font-size: 40px;
+            margin: 0 10px;
+            animation: float 2s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Modal styling */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            animation: fadeInModal 0.5s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        @keyframes fadeInModal {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .emoji-item {
+                font-size: 30px;
+                margin: 5px;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+            }
+        }
+/*the end emoji*/
+
+
+
+
+        .tribute_Link_Page_container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 3px solid #3498db;
+        }
+
+        .tribute_Link_Page_header {
+            background: linear-gradient(90deg, #1abc9c, #3498db);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .tribute_Link_Page_header h1 {
+            margin: 0;
+            font-size: 3em;
+            /* Increased font size */
+        }
+
+        .tribute_Link_Page_section {
+            margin-bottom: 30px;
+        }
+
+        .tribute_Link_Page_section-title {
+            background: #2ecc71;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 2em;
+            /* Increased font size */
+            border: 2px solid #27ae60;
+            text-align: center;
+            /* Centered headings */
+        }
+
+        .tribute_Link_Page_card {
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: background-color 0.4s, transform 0.4s;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .tribute_Link_Page_card:hover {
+            background-color: #dfe6e9;
+            transform: scale(1.03);
+            border-color: #2980b9;
+        }
+
+        .tribute_Link_Page_benefits {
+            background: #e67e22;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Open Sans', sans-serif;
+            border: 2px solid #d35400;
+        }
+
+        .tribute_Link_Page_founder-images img {
+            width: 190px;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .tribute_Link_Page_founder-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .tribute_Link_Page_video {
+            margin-top: 20px;
+            border: 3px solid #3498db;
+            border-radius: 8px;
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        .tribute_Link_Page_video iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            transition: transform 0.3s;
+        }
+
+        .tribute_Link_Page_video:hover iframe {
+            transform: scale(1.05);
+        }
+
+        .tribute_Link_Page_footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-top: 3px solid #3498db;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tribute_Link_Page_container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .tribute_Link_Page_video iframe {
+                height: 200px;
+            }
+
+        }
+
+
+        .forward_And_Back_button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .forward_And_Back_button {
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .forward_And_Back_button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Infotainment</a>
+        <a href="tribute.html">Tribute</a>
+        <a href="welcome.html">Welcome</a>
+        <a href="priceandorder.html">Price & Order</a>
+    </nav>
+
+    <!-- Social Media Sidebar -->
+    <div class="social-icons">
+        <a href="https://web.whatsapp.com/" class="whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/login.php/" class="facebook" title="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/accounts/login/?next=%2Fproud.mp%2Ffeed%2F&source=profile_feed_tab"
+            class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/login" class="linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/account" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJteCI6IjIifQ%3D%3D%22%7D"
+            class="fa-x-twitter" title="X"><i class="fa-brands fa-x"></i></a>
+
+    </div>
+
+    <!-- Infotainment Section -->   
+    <section id="infotainment">
+        <div>
+            <h1>Infotainment</h1>
+            <h1>CLOUD COMPUTING</h1>
+        </div>
+        <div class="infotainment-media">
+            <img src="./jpeg/architect.jpeg" alt="Fun Image 1" onclick="openModal('image1')">
+            <img src="./jpeg/SALESFORCE.JPEG" alt="Fun Image 2" onclick="openModal('image2')">
+            <img src="./jpeg/az-305.jpeg" alt="Fun Image 3" onclick="openModal('image3')">
+            <img src="./jpeg/AZ-204.JPEG" alt="Fun Image 4" onclick="openModal('image4')">
+            <img src="./jpeg/MICROSOFT_AZURE.jpeg" alt="Fun Image 1" onclick="openModal('image1')">
+            <img src="./jpeg/GOOGLE_CLOUD.jpeg" alt="Fun Image 2" onclick="openModal('image2')">
+            <img src="./jpeg/AWS_PWC.jpg" alt="Fun Image 1" onclick="openModal('image1')">
+            <img src="./jpeg/DATA_ENGINEER.jpeg" alt="Fun Image 2" onclick="openModal('image2')">
+            <img src="./jpeg/AZ-204.JPEG" alt="Fun Image 3" onclick="openModal('image3')">
+            <img src="./jpeg/PWC.JPEG" alt="Fun Image 4" onclick="openModal('image4')">
+            <img src="./jpeg/MACHINE_LEARNING.jpeg" alt="Fun Image 1" onclick="openModal('image1')">
+            <img src="./jpeg/CLOUD_DEVOPS.JPEG" alt="Fun Image 1" onclick="openModal('image1')">
+
+<!--start video section -->
+<div class="video-container">
+    <div class="video-thumbnail" data-video-id="MZ6eHbNnngk" onclick="openModal(this)">
+        <img src="https://img.youtube.com/vi/MZ6eHbNnngk/0.jpg" alt="Video Thumbnail">
+    </div>
+    <div class="video-thumbnail" data-video-id="WGJJIrtnfpk" onclick="openModal(this)">
+        <img src="https://img.youtube.com/vi/WGJJIrtnfpk/0.jpg" alt="Video Thumbnail">
+    </div>
+    <div class="video-thumbnail" data-video-id="Q33KBiDriJY" onclick="openModal(this)">
+        <img src="https://img.youtube.com/vi/Q33KBiDriJY/0.jpg" alt="Video Thumbnail">
+    </div>
+    <div class="video-thumbnail" data-video-id="f5V1kg6bcYg" onclick="openModal(this)">
+        <img src="https://img.youtube.com/vi/f5V1kg6bcYg/0.jpg" alt="Video Thumbnail">
+    </div>
+    <div class="video-thumbnail" data-video-id="y4Wv7_MTzx0" onclick="openModal(this)">
+        <img src="https://img.youtube.com/vi/y4Wv7_MTzx0/0.jpg" alt="Video Thumbnail">
+    </div>
+    <div class="video-thumbnail" data-video-id="0UdZ9J3pyrU" onclick="openModal(this)">
+        <img src="https://img.youtube.com/vi/0UdZ9J3pyrU/0.jpg" alt="Video Thumbnail">
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <iframe id="videoIframe" src="" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script>
+    function openModal(thumbnail) {
+        var modal = document.getElementById("videoModal");
+        var iframe = document.getElementById("videoIframe");
+        var videoId = thumbnail.getAttribute("data-video-id");
+
+        // Adjust thumbnail style
+        thumbnail.classList.add("expanded");
+
+        iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+        modal.style.display = "flex";
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("videoModal");
+        var iframe = document.getElementById("videoIframe");
+
+        // Reset thumbnail style
+        var thumbnails = document.querySelectorAll(".video-thumbnail");
+        thumbnails.forEach(thumbnail => thumbnail.classList.remove("expanded"));
+
+        iframe.src = ""; // Stop video playback
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("videoModal");
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+<!-- the end video section-->>
+           </div>
+    </section>
+
+    <!-- Tribute Section -->
+    <section id="tribute">
+        <h1>Tribute to a Great Personality</h1>
+        <img src="tribute.jpg" alt="Tribute Person">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, lacus eu vestibulum aliquam,
+            mi est vehicula ex, et laoreet nunc felis non magna.</p>
+    </section>
+
+   
+</body>
+
+</html>

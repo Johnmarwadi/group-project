@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+/* Navbar Styling */
+.navbar {
+    background-color: #8e24aa;
+    overflow: hidden;
+    color: white;
+    padding: 15px;
+    position: fixed; /* Fixes the navbar at the top */
+    top: 0; /* Aligns the navbar to the top of the viewport */
+    width: 100%; /* Makes sure the navbar spans the full width */
+    height: 32px;
+    z-index: 1000; /* Ensures the navbar is above other content */
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.navbar a:hover {
+    background-color: #7b1fa2;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+/* Adjust container padding to prevent content from being hidden under the fixed navbar */
+#price-order {
+    background-color: #f3e5f5;
+    text-align: center;
+    border: 5px solid #8e24aa;
+    padding: 20px;
+    animation: fadeIn 1.2s ease;
+    margin-top: 70px; /* Adjust according to the height of your fixed navbar */
+}
+
+/* Additional styles for other elements */
+
+
+
+/* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #8e24aa;
+            overflow: hidden;
+            color: white;
+            padding: 15px;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #7b1fa2;
+        }
+
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* Container Styling */
+        #price-order {
+            background-color: #f3e5f5;
+            text-align: center;
+            border: 5px solid #8e24aa;
+            padding: 20px;
+            animation: fadeIn 1.2s ease;
+            margin-top: 20px;
+        }
+
+        /* Price Table Styling */
+        .price-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #e1bee7;
+            color: #4a148c;
+            animation: slideIn 1s ease;
+        }
+
+        .price-table th, .price-table td {
+            border: 1px solid #7b1fa2;
+            padding: 10px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .price-table th {
+            background-color: #8e24aa;
+            color: white;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: #d1c4e9;
+        }
+
+        .price-table tr:hover {
+            background-color: #b39ddb;
+        }
+
+        form {
+            margin-top: 40px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            border: 2px solid #8e24aa;
+            border-radius: 5px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #4caf50;
+            transform: scale(1.02);
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        /* Emoji Animation */
+        #emoji-message {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .emoji-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 24px;
+        }
+
+        .emoji-item {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Modal Styles */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            animation: zoomIn 0.5s ease;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000;
+            transition: color 0.3s ease;
+        }
+
+        .modal-content .close:hover {
+            color: #e53935;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #8e24aa;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#" class="logo">Edureka</a>
+        <a href="#price-order">Order</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Price List and Order Section -->
+    <div id="price-order">
+        <h1>Complete Your Order</h1>
+
+        <!-- Price Table -->
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price (INR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AWS Architect Certification Training</td>
+                    <td>₹41,317</td>
+                </tr>
+                <tr>
+                    <td>Salesforce Admin and App Builder</td>
+                    <td>₹33,117</td>
+                </tr>
+                <tr>
+                    <td>Microsoft Azure AZ-305</td>
+                    <td>₹28,977</td>
+                </tr>
+                <tr>
+                    <td>Microsoft Azure AZ-204</td>
+                    <td>₹28,977</td>
+                </tr>
+                <tr>
+                    <td>Microsoft Azure Administrator AZ-104</td>
+                    <td>₹33,117</td>
+                </tr>
+                <tr>
+                    <td>Google Cloud Certification Cloud Architect</td>
+                    <td>₹41,317</td>
+                </tr>
+                <tr>
+                    <td>Designing Robust Cloud Solutions with AWS</td>
+                    <td>₹37,207</td>
+                </tr>
+                <tr>
+                    <td>AWS Data Engineer Certification Course</td>
+                    <td>₹41,317</td>
+                </tr>
+                <tr>
+                    <td>Architecting Cloud Infrastructure Solutions on Microsoft Azure</td>
+                    <td>₹37,207</td>
+                </tr>
+                <tr>
+                    <td>AWS Machine Learning Certification Course</td>
+                    <td>₹41,317</td>
+                </tr>
+                <tr>
+                    <td>Cloud and DevOps Internship Program</td>
+                    <td>₹24,797</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form id="orderForm" onsubmit="event.preventDefault(); validateForm();">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <select name="product" required>
+                <option value="" disabled selected>Select a product</option>
+                <option value="AWS ARCHITECT CERTIFICATION TRAINING">AWS Architect Certification Training</option>
+                <option value="SALESFORCE ADMIN AND APP BUILDER">Salesforce Admin and App Builder</option>
+                <option value="MICROSOFT AZURE AZ-305">Microsoft Azure AZ-305</option>
+                <option value="MICROSOFT AZURE AZ-204">Microsoft Azure AZ-204</option>
+                <option value="MICROSOFT AZURE ADMINISTRATOR AZ-104">Microsoft Azure Administrator AZ-104</option>
+                <option value="GOOGLE CLOUD CERTIFICATION CLOUD ARCHITECT">Google Cloud Certification Cloud Architect</option>
+                <option value="DESIGNING ROBUST CLOUD SOLUTIONS WITH AWS">Designing Robust Cloud Solutions with AWS</option>
+                <option value="AWS DATA ENGINEER CERTIFICATION COURSE">AWS Data Engineer Certification Course</option>
+                <option value="ARCHITECTING CLOUD INFRASTRUCTURE ON AZURE">Architecting Cloud Infrastructure Solutions on Microsoft Azure</option>
+                <option value="AWS MACHINE LEARNING CERTIFICATION COURSE">AWS Machine Learning Certification Course</option>
+                <option value="CLOUD AND DEVOPS INTERNSHIP PROGRAM">Cloud and DevOps Internship Program</option>
+            </select>
+            <input type="submit" value="Place Order">
+        </form>
+
+        <div id="emoji-message">
+            <p>Thanks for choosing Edureka! Wow! Your selection is going to help you achieve your life goals.</p>
+            <div class="emoji-container">
+                <span class="emoji-item">🎉</span>
+                <span class="emoji-item">🥳</span>
+                <span class="emoji-item">🎊</span>
+                <span class="emoji-item">👏</span>
+                <span class="emoji-item">💯</span>
+                <span class="emoji-item">🏆</span>
+                <span class="emoji-item">🥇</span>
+                <span class="emoji-item">🎖️</span>
+                <span class="emoji-item">✨</span>
+                <span class="emoji-item">🎆</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Congratulations! 🎉</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        (C) ALL RIGHTS RESERVED 2024 - 2025 BY MAHESHWER_CHOWDEYKARI
+    </div>
+
+    <script>
+        function validateForm() {
+            // Check if the form is valid
+            const form = document.getElementById('orderForm');
+            if (form.checkValidity()) {
+                // If valid, display the congratulations message with animated emojis
+                document.getElementById('emoji-message').style.display = 'block';
+
+                // Open the modal
+                openModal();
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

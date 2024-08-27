@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward and Backward Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        iframe {
+            width: 80%;
+            height: 60%;
+            border: none;
+            margin: 20px 0;
+        }
+
+        .forward_And_Back_button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .forward_And_Back_button {
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .forward_And_Back_button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="forward_And_Back_iframe" src=""></iframe>
+    <div class="forward_And_Back_button-container">
+        <button class="forward_And_Back_button" id="forward_And_Back_backward" onclick="navigate(-1)" disabled>Backward</button>
+        <button class="forward_And_Back_button" id="forward_And_Back_forward" onclick="navigate(1)">Forward</button>
+    </div>
+
+    <script>
+        const links = [
+            'https://www.example.com',
+            'https://www.google.com',
+            'https://www.wikipedia.org',
+            'https://www.openai.com'
+        ];
+
+        let currentIndex = 0;
+
+        function updateIframe() {
+            document.getElementById('forward_And_Back_iframe').src = links[currentIndex];
+            document.getElementById('forward_And_Back_backward').disabled = currentIndex === 0;
+            document.getElementById('forward_And_Back_forward').disabled = currentIndex === links.length - 1;
+        }
+
+        function navigate(direction) {
+            currentIndex += direction;
+            updateIframe();
+        }
+
+        updateIframe();
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Cloud Computing Courses</title>
+    <style>
+               /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('hero-image.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: blue;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .hero-text .btn {
+            padding: 10px 20px;
+            background-color: yellow;
+            color: blue;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-text .btn:hover {
+            background-color: silver;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Course Section */
+        .course-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        .course-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .course-card {
+            background-color: silver;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-info {
+            padding: 20px;
+        }
+
+        .course-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .course-info p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .course-info .btn {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-info .btn:hover {
+            background-color: green;
+        }
+
+        /* Responsive Footer */
+        footer {
+            background-color: #333;
+            color:white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .course-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .course-info p {
+                font-size: 0.9rem;
+            }
+
+            .hero-text .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-text">
+            <h1>Master Cloud Computing</h1>
+            <p>Join thousands of learners in mastering the Cloud</p>
+            <button class="btn">Start Learning Now</button>
+        </div>
+    </section>
+
+    <!-- Course Section -->
+    <section class="course-section">
+        <h2>Cloud Computing Courses</h2>
+        <div class="courses">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <img src="./jpeg/" alt="AWS Certification">
+                <div class="course-info">
+                    <h3>AWS Certification Training</h3>
+                    <p>Learn the core AWS services and become a certified solutions architect.</p>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+            <!-- Course 2 -->
+            <div class="course-card">
+                <img src="course2.jpg" alt="Azure Certification">
+                <div class="course-info">
+                    <h3>Azure Certification Training</h3>
+                    <p>Master Azure and prepare for the AZ-305 certification exam.</p>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+            <!-- Course 3 -->
+            <div class="course-card">
+                <img src="course3.jpg" alt="GCP Certification">
+                <div class="course-info">
+                    <h3>GCP Certification Training</h3>
+                    <p>Become a certified Google Cloud architect and build secure cloud solutions.</p>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; (C)2024 - 2025. ALL RIGHTS RESERVED BY MAHESHWER_CHOWDEYKARI.</p>
+    </footer>
+</body>
+
+</html>
